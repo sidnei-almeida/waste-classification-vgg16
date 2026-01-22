@@ -179,7 +179,7 @@ In the fine-tuned model, the last convolutional layers of VGG16 are unfrozen and
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/waste-classification-vgg16.git
+git clone https://github.com/sidnei-almeida/waste-classification-vgg16.git
 cd waste-classification-vgg16
 ```
 
@@ -440,11 +440,11 @@ This project was developed as part of the **Deep Learning with Keras and TensorF
 
 ## 👤 Author
 
-**Your Name**
+**Sidnei Almeida**
 
-- GitHub: [@your-username](https://github.com/your-username)
-- LinkedIn: [Your Profile](https://linkedin.com/in/your-profile)
-- Email: your.email@example.com
+- GitHub: [@sidnei-almeida](https://github.com/sidnei-almeida)
+- LinkedIn: [Sidnei Almeida](https://www.linkedin.com/in/saaelmeida93/)
+- Email: sidnei.almeida1806@gmail.com
 
 ---
 
