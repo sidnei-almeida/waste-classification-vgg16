@@ -1,4 +1,4 @@
-# Classificação de Resíduos usando Transfer Learning com VGG16
+# 🗑️ Classificação de Resíduos usando Transfer Learning com VGG16
 
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.17.0-orange.svg)](https://www.tensorflow.org/)
 [![Keras](https://img.shields.io/badge/Keras-Latest-red.svg)](https://keras.io/)
@@ -11,7 +11,7 @@
 
 ---
 
-## Índice
+## 📋 Índice
 
 - [Visão Geral](#visão-geral)
 - [Objetivos do Projeto](#objetivos-do-projeto)
@@ -30,7 +30,7 @@
 
 ---
 
-## Visão Geral
+## 🎯 Visão Geral
 
 Este projeto implementa um sistema de classificação automática de resíduos utilizando técnicas avançadas de **Deep Learning** e **Transfer Learning**. O modelo é capaz de distinguir entre resíduos **orgânicos** (O) e **recicláveis** (R) através da análise de imagens, utilizando a arquitetura VGG16 pré-treinada no dataset ImageNet.
 
@@ -47,19 +47,19 @@ Utilizando **Transfer Learning** com o modelo VGG16 pré-treinado, desenvolvemos
 
 ---
 
-## Objetivos do Projeto
+## 🎯 Objetivos do Projeto
 
 Após a conclusão deste projeto, você será capaz de:
 
-- Aplicar **Transfer Learning** usando o modelo VGG16 para classificação de imagens
-- Preparar e pré-processar dados de imagem para tarefas de machine learning
-- Realizar **fine-tuning** de um modelo pré-treinado para melhorar a acurácia
-- Avaliar o desempenho do modelo usando métricas apropriadas
-- Visualizar predições do modelo em dados de teste
+- ✅ Aplicar **Transfer Learning** usando o modelo VGG16 para classificação de imagens
+- ✅ Preparar e pré-processar dados de imagem para tarefas de machine learning
+- ✅ Realizar **fine-tuning** de um modelo pré-treinado para melhorar a acurácia
+- ✅ Avaliar o desempenho do modelo usando métricas apropriadas
+- ✅ Visualizar predições do modelo em dados de teste
 
 ---
 
-## Características Principais
+## ✨ Características Principais
 
 | Característica | Descrição |
 |---------------|-----------|
@@ -74,7 +74,7 @@ Após a conclusão deste projeto, você será capaz de:
 
 ---
 
-## Dataset
+## 📊 Dataset
 
 ### Fonte
 
@@ -111,7 +111,7 @@ o-vs-r-split/
 
 ---
 
-## Arquitetura do Modelo
+## 🏗️ Arquitetura do Modelo
 
 ### Base Model: VGG16
 
@@ -145,7 +145,7 @@ No modelo fine-tuned, as últimas camadas convolucionais do VGG16 são descongel
 
 ---
 
-## Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
 ### Bibliotecas Principais
 
@@ -166,7 +166,7 @@ No modelo fine-tuned, as últimas camadas convolucionais do VGG16 são descongel
 
 ---
 
-## Instalação
+## 💻 Instalação
 
 ### Pré-requisitos
 
@@ -206,7 +206,7 @@ O dataset será baixado automaticamente ao executar o notebook. Alternativamente
 
 ---
 
-## Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
 ```
 waste-classification-vgg16/
@@ -230,7 +230,7 @@ waste-classification-vgg16/
 
 ---
 
-## Como Usar
+## 🚀 Como Usar
 
 ### Executando o Notebook Completo
 
@@ -290,7 +290,7 @@ print(f"Classificação: {class_label}")
 
 ---
 
-## Resultados
+## 📈 Resultados
 
 ### Métricas de Desempenho
 
@@ -331,7 +331,7 @@ O projeto inclui visualizações de predições em imagens de teste, mostrando:
 
 ---
 
-## Metodologia
+## 🔬 Metodologia
 
 ### 1. Preparação dos Dados
 
@@ -385,7 +385,7 @@ O projeto inclui visualizações de predições em imagens de teste, mostrando:
 
 ---
 
-## Contribuições
+## 🤝 Contribuições
 
 Contribuições são bem-vindas! Se você deseja contribuir para este projeto:
 
@@ -407,13 +407,13 @@ Contribuições são bem-vindas! Se você deseja contribuir para este projeto:
 
 ---
 
-## Licença
+## 📄 Licença
 
 Este projeto foi desenvolvido como parte do curso **Deep Learning with Keras and TensorFlow** da Coursera. O código é fornecido para fins educacionais.
 
 ---
 
-## Referências
+## 📚 Referências
 
 ### Artigos e Documentação
 
@@ -438,7 +438,7 @@ Este projeto foi desenvolvido como parte do curso **Deep Learning with Keras and
 
 ---
 
-## Autor
+## 👤 Autor
 
 **Seu Nome**
 
@@ -448,7 +448,7 @@ Este projeto foi desenvolvido como parte do curso **Deep Learning with Keras and
 
 ---
 
-## Agradecimentos
+## 🙏 Agradecimentos
 
 - **Coursera** e **IBM Skills Network** pelo excelente curso
 - **Kaggle** pela disponibilização do dataset
@@ -456,7 +456,7 @@ Este projeto foi desenvolvido como parte do curso **Deep Learning with Keras and
 
 ---
 
-## Contato
+## 📧 Contato
 
 Para dúvidas, sugestões ou colaborações, sinta-se à vontade para abrir uma issue ou entrar em contato.
 
@@ -464,8 +464,8 @@ Para dúvidas, sugestões ou colaborações, sinta-se à vontade para abrir uma 
 
 <div align="center">
 
-**Se este projeto foi útil para você, considere dar uma estrela!**
+**Se este projeto foi útil para você, considere dar uma estrela! ⭐**
 
-Feito com TensorFlow e Keras
+Feito com ❤️ usando TensorFlow e Keras
 
 </div>
