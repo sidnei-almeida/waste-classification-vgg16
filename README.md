@@ -1,354 +1,354 @@
-# 🗑️ Classificação de Resíduos usando Transfer Learning com VGG16
+# 🗑️ Waste Classification using Transfer Learning with VGG16
 
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.17.0-orange.svg)](https://www.tensorflow.org/)
 [![Keras](https://img.shields.io/badge/Keras-Latest-red.svg)](https://keras.io/)
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> **Projeto Final do Curso:** Deep Learning with Keras and TensorFlow (Coursera)  
-> **Tecnologia:** Transfer Learning com modelo pré-treinado VGG16  
-> **Aplicação:** Classificação automática de resíduos (Orgânico vs. Reciclável)
+> **Final Project Course:** Deep Learning with Keras and TensorFlow (Coursera)  
+> **Technology:** Transfer Learning with pre-trained VGG16 model  
+> **Application:** Automatic waste classification (Organic vs. Recyclable)
 
 ---
 
-## 📋 Índice
+## 📋 Table of Contents
 
-- [Visão Geral](#visão-geral)
-- [Objetivos do Projeto](#objetivos-do-projeto)
-- [Características Principais](#características-principais)
+- [Overview](#overview)
+- [Project Objectives](#project-objectives)
+- [Key Features](#key-features)
 - [Dataset](#dataset)
-- [Arquitetura do Modelo](#arquitetura-do-modelo)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Instalação](#instalação)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Como Usar](#como-usar)
-- [Resultados](#resultados)
-- [Metodologia](#metodologia)
-- [Contribuições](#contribuições)
-- [Licença](#licença)
-- [Referências](#referências)
+- [Model Architecture](#model-architecture)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Project Structure](#project-structure)
+- [How to Use](#how-to-use)
+- [Results](#results)
+- [Methodology](#methodology)
+- [Contributions](#contributions)
+- [License](#license)
+- [References](#references)
 
 ---
 
-## 🎯 Visão Geral
+## 🎯 Overview
 
-Este projeto implementa um sistema de classificação automática de resíduos utilizando técnicas avançadas de **Deep Learning** e **Transfer Learning**. O modelo é capaz de distinguir entre resíduos **orgânicos** (O) e **recicláveis** (R) através da análise de imagens, utilizando a arquitetura VGG16 pré-treinada no dataset ImageNet.
+This project implements an automatic waste classification system using advanced **Deep Learning** and **Transfer Learning** techniques. The model can distinguish between **organic** (O) and **recyclable** (R) waste through image analysis, using the VGG16 architecture pre-trained on the ImageNet dataset.
 
-### Contexto do Problema
+### Problem Context
 
-A classificação manual de resíduos é um processo trabalhoso, propenso a erros e que pode levar à contaminação de materiais recicláveis. Este projeto visa automatizar esse processo utilizando visão computacional e aprendizado de máquina, melhorando a eficiência e reduzindo as taxas de contaminação em sistemas de gestão de resíduos.
+Manual waste classification is a laborious, error-prone process that can lead to contamination of recyclable materials. This project aims to automate this process using computer vision and machine learning, improving efficiency and reducing contamination rates in waste management systems.
 
-### Solução Proposta
+### Proposed Solution
 
-Utilizando **Transfer Learning** com o modelo VGG16 pré-treinado, desenvolvemos dois modelos:
+Using **Transfer Learning** with the pre-trained VGG16 model, we developed two models:
 
-1. **Extract Features Model**: Modelo que extrai características usando camadas congeladas do VGG16
-2. **Fine-Tuned Model**: Modelo refinado com fine-tuning das últimas camadas do VGG16
-
----
-
-## 🎯 Objetivos do Projeto
-
-Após a conclusão deste projeto, você será capaz de:
-
-- ✅ Aplicar **Transfer Learning** usando o modelo VGG16 para classificação de imagens
-- ✅ Preparar e pré-processar dados de imagem para tarefas de machine learning
-- ✅ Realizar **fine-tuning** de um modelo pré-treinado para melhorar a acurácia
-- ✅ Avaliar o desempenho do modelo usando métricas apropriadas
-- ✅ Visualizar predições do modelo em dados de teste
+1. **Extract Features Model**: Model that extracts features using frozen VGG16 layers
+2. **Fine-Tuned Model**: Refined model with fine-tuning of the last VGG16 layers
 
 ---
 
-## ✨ Características Principais
+## 🎯 Project Objectives
 
-| Característica | Descrição |
-|---------------|-----------|
-| **Transfer Learning** | Aproveitamento de conhecimento pré-treinado do VGG16 |
-| **Data Augmentation** | Aumento de dados para melhor generalização |
-| **Dois Modelos** | Comparação entre extract features e fine-tuning |
-| **Otimização GPU** | Configurado para aceleração em Intel Arc GPU |
-| **Visualizações** | Gráficos de perda e acurácia durante o treinamento |
-| **Model Checkpointing** | Salvamento automático dos melhores modelos |
-| **Early Stopping** | Prevenção de overfitting durante o treinamento |
-| **Learning Rate Decay** | Decaimento exponencial da taxa de aprendizado |
+Upon completion of this project, you will be able to:
+
+- ✅ Apply **Transfer Learning** using the VGG16 model for image classification
+- ✅ Prepare and preprocess image data for machine learning tasks
+- ✅ Perform **fine-tuning** of a pre-trained model to improve accuracy
+- ✅ Evaluate model performance using appropriate metrics
+- ✅ Visualize model predictions on test data
+
+---
+
+## ✨ Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **Transfer Learning** | Leveraging pre-trained knowledge from VGG16 |
+| **Data Augmentation** | Data augmentation for better generalization |
+| **Two Models** | Comparison between extract features and fine-tuning |
+| **GPU Optimization** | Configured for acceleration on Intel Arc GPU |
+| **Visualizations** | Loss and accuracy plots during training |
+| **Model Checkpointing** | Automatic saving of best models |
+| **Early Stopping** | Overfitting prevention during training |
+| **Learning Rate Decay** | Exponential decay of learning rate |
 
 ---
 
 ## 📊 Dataset
 
-### Fonte
+### Source
 
-O dataset utilizado é o [Waste Classification Dataset](https://www.kaggle.com/datasets/techsash/waste-classification-data) disponível no Kaggle.
+The dataset used is the [Waste Classification Dataset](https://www.kaggle.com/datasets/techsash/waste-classification-data) available on Kaggle.
 
-### Estrutura
+### Structure
 
 ```
 o-vs-r-split/
 ├── train/
-│   ├── O/          # 500 imagens de resíduos orgânicos
-│   └── R/          # 500 imagens de resíduos recicláveis
+│   ├── O/          # 500 organic waste images
+│   └── R/          # 500 recyclable waste images
 └── test/
-    ├── O/          # 100 imagens de resíduos orgânicos
-    └── R/          # 100 imagens de resíduos recicláveis
+    ├── O/          # 100 organic waste images
+    └── R/          # 100 recyclable waste images
 ```
 
-### Estatísticas
+### Statistics
 
-| Métrica | Valor |
-|---------|-------|
-| **Total de imagens** | 1.200 |
-| **Treinamento** | 1.000 imagens (800 treino + 200 validação) |
-| **Teste** | 200 imagens |
-| **Classes** | 2 (Orgânico 'O' e Reciclável 'R') |
-| **Dimensões** | 150x150 pixels |
-| **Formato** | JPG |
+| Metric | Value |
+|--------|-------|
+| **Total images** | 1,200 |
+| **Training** | 1,000 images (800 train + 200 validation) |
+| **Test** | 200 images |
+| **Classes** | 2 (Organic 'O' and Recyclable 'R') |
+| **Dimensions** | 150x150 pixels |
+| **Format** | JPG |
 
-### Divisão dos Dados
+### Data Split
 
-- **Treino**: 80% (800 imagens)
-- **Validação**: 20% do conjunto de treino (200 imagens)
-- **Teste**: 200 imagens (100 por classe)
+- **Train**: 80% (800 images)
+- **Validation**: 20% of training set (200 images)
+- **Test**: 200 images (100 per class)
 
 ---
 
-## 🏗️ Arquitetura do Modelo
+## 🏗️ Model Architecture
 
 ### Base Model: VGG16
 
-O modelo utiliza a arquitetura VGG16 pré-treinada no ImageNet como base:
+The model uses the VGG16 architecture pre-trained on ImageNet as a base:
 
 ```
-VGG16 Base (Congelado)
-├── Blocos Convolucionais (congelados)
+VGG16 Base (Frozen)
+├── Convolutional Blocks (frozen)
 │   ├── Conv2D + ReLU
 │   ├── MaxPooling2D
-│   └── ... (13 camadas convolucionais)
-└── Camadas Densas (treináveis)
+│   └── ... (13 convolutional layers)
+└── Dense Layers (trainable)
     ├── Flatten
     ├── Dense(512) + ReLU + Dropout(0.5)
     ├── Dense(512) + ReLU + Dropout(0.5)
-    └── Dense(1) + Sigmoid (saída binária)
+    └── Dense(1) + Sigmoid (binary output)
 ```
 
-### Parâmetros do Modelo
+### Model Parameters
 
-| Parâmetro | Valor |
+| Parameter | Value |
 |-----------|-------|
-| **Total de parâmetros** | 19,172,673 |
-| **Parâmetros treináveis** | 4,457,985 (Extract Features Model) |
-| **Parâmetros não-treináveis** | 14,714,688 (camadas congeladas do VGG16) |
-| **Tamanho do modelo** | ~73.14 MB |
+| **Total parameters** | 19,172,673 |
+| **Trainable parameters** | 4,457,985 (Extract Features Model) |
+| **Non-trainable parameters** | 14,714,688 (frozen VGG16 layers) |
+| **Model size** | ~73.14 MB |
 
 ### Fine-Tuning
 
-No modelo fine-tuned, as últimas camadas convolucionais do VGG16 são descongeladas e treinadas com uma taxa de aprendizado menor.
+In the fine-tuned model, the last convolutional layers of VGG16 are unfrozen and trained with a lower learning rate.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Technologies Used
 
-### Bibliotecas Principais
+### Main Libraries
 
-- **TensorFlow** 2.17.0 - Framework de deep learning
-- **Keras** - API de alto nível para TensorFlow
-- **NumPy** 1.26.4 - Operações matemáticas e arrays
-- **scikit-learn** 1.5.1 - Métricas de avaliação
-- **Matplotlib** 3.9.2 - Visualização de dados e gráficos
+- **TensorFlow** 2.17.0 - Deep learning framework
+- **Keras** - High-level API for TensorFlow
+- **NumPy** 1.26.4 - Mathematical operations and arrays
+- **scikit-learn** 1.5.1 - Evaluation metrics
+- **Matplotlib** 3.9.2 - Data visualization and plots
 
-### Extensões e Otimizações
+### Extensions and Optimizations
 
-- **Intel Extension for TensorFlow** - Aceleração em Intel Arc GPU
-- **ImageDataGenerator** - Geração e aumento de dados em tempo real
+- **Intel Extension for TensorFlow** - Acceleration on Intel Arc GPU
+- **ImageDataGenerator** - Real-time data generation and augmentation
 
-### Hardware Otimizado
+### Optimized Hardware
 
-- Intel Arc GPU (opcional, mas recomendado para melhor performance)
+- Intel Arc GPU (optional, but recommended for better performance)
 
 ---
 
-## 💻 Instalação
+## 💻 Installation
 
-### Pré-requisitos
+### Prerequisites
 
-- Python 3.12 ou superior
-- pip (gerenciador de pacotes Python)
-- Git (para clonar o repositório)
+- Python 3.12 or higher
+- pip (Python package manager)
+- Git (to clone the repository)
 
-### Passo a Passo
+### Step by Step
 
-**1. Clone o repositório**
+**1. Clone the repository**
 
 ```bash
-git clone https://github.com/seu-usuario/waste-classification-vgg16.git
+git clone https://github.com/your-username/waste-classification-vgg16.git
 cd waste-classification-vgg16
 ```
 
-**2. Crie um ambiente virtual (recomendado)**
+**2. Create a virtual environment (recommended)**
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # No Windows: venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-**3. Instale as dependências**
+**3. Install dependencies**
 
 ```bash
 pip install tensorflow==2.17.0
 pip install numpy==1.26.4
 pip install scikit-learn==1.5.1
 pip install matplotlib==3.9.2
-pip install intel-extension-for-tensorflow[xpu]  # Opcional, para Intel Arc GPU
+pip install intel-extension-for-tensorflow[xpu]  # Optional, for Intel Arc GPU
 ```
 
-**4. Baixe o dataset**
+**4. Download the dataset**
 
-O dataset será baixado automaticamente ao executar o notebook. Alternativamente, você pode baixá-lo manualmente através do código fornecido no notebook.
+The dataset will be downloaded automatically when running the notebook. Alternatively, you can download it manually using the code provided in the notebook.
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
 waste-classification-vgg16/
 │
-├── README.md                                    # Este arquivo
-├── Final Proj-Classify Waste Products Using TL- FT-v1.ipynb  # Notebook principal
+├── README.md                                    # This file
+├── Final Proj-Classify Waste Products Using TL- FT-v1.ipynb  # Main notebook
 │
 ├── o-vs-r-split/                               # Dataset
 │   ├── train/
-│   │   ├── O/                                  # Imagens orgânicas (treino)
-│   │   └── R/                                  # Imagens recicláveis (treino)
+│   │   ├── O/                                  # Organic images (training)
+│   │   └── R/                                  # Recyclable images (training)
 │   └── test/
-│       ├── O/                                  # Imagens orgânicas (teste)
-│       └── R/                                  # Imagens recicláveis (teste)
+│       ├── O/                                  # Organic images (test)
+│       └── R/                                  # Recyclable images (test)
 │
-├── O_R_tlearn_vgg16.keras                      # Modelo Extract Features salvo
-├── O_R_tlearn_fine_tune_vgg16.keras           # Modelo Fine-Tuned salvo
+├── O_R_tlearn_vgg16.keras                      # Saved Extract Features model
+├── O_R_tlearn_fine_tune_vgg16.keras           # Saved Fine-Tuned model
 │
-└── venv/                                       # Ambiente virtual (não versionado)
+└── venv/                                       # Virtual environment (not versioned)
 ```
 
 ---
 
-## 🚀 Como Usar
+## 🚀 How to Use
 
-### Executando o Notebook Completo
+### Running the Complete Notebook
 
-**1. Abra o notebook Jupyter**
+**1. Open the Jupyter notebook**
 
 ```bash
 jupyter notebook "Final Proj-Classify Waste Products Using TL- FT-v1.ipynb"
 ```
 
-Ou use VS Code / JupyterLab para abrir o arquivo `.ipynb`
+Or use VS Code / JupyterLab to open the `.ipynb` file
 
-**2. Execute as células sequencialmente**
+**2. Execute cells sequentially**
 
-O notebook está organizado em tarefas numeradas:
+The notebook is organized into numbered tasks:
 
-- **Task 1**: Verificar versão do TensorFlow
-- **Task 2**: Criar gerador de dados de teste
-- **Task 3**: Verificar tamanho do gerador de treino
-- **Task 4**: Visualizar resumo do modelo
-- **Task 5**: Compilar o modelo
-- **Task 6**: Plotar curvas de acurácia (Extract Features)
-- **Task 7**: Plotar curvas de perda (Fine-Tuned)
-- **Task 8**: Plotar curvas de acurácia (Fine-Tuned)
-- **Task 9**: Visualizar predições (Extract Features)
-- **Task 10**: Visualizar predições (Fine-Tuned)
+- **Task 1**: Check TensorFlow version
+- **Task 2**: Create test data generator
+- **Task 3**: Check training generator size
+- **Task 4**: Visualize model summary
+- **Task 5**: Compile the model
+- **Task 6**: Plot accuracy curves (Extract Features)
+- **Task 7**: Plot loss curves (Fine-Tuned)
+- **Task 8**: Plot accuracy curves (Fine-Tuned)
+- **Task 9**: Visualize predictions (Extract Features)
+- **Task 10**: Visualize predictions (Fine-Tuned)
 
-### Carregando Modelos Pré-treinados
+### Loading Pre-trained Models
 
 ```python
 import tensorflow as tf
 
-# Carregar modelo Extract Features
+# Load Extract Features model
 extract_feat_model = tf.keras.models.load_model('O_R_tlearn_vgg16.keras')
 
-# Carregar modelo Fine-Tuned
+# Load Fine-Tuned model
 fine_tune_model = tf.keras.models.load_model('O_R_tlearn_fine_tune_vgg16.keras')
 ```
 
-### Fazendo Predições
+### Making Predictions
 
 ```python
 from tensorflow.keras.preprocessing import image
 import numpy as np
 
-# Carregar e pré-processar imagem
+# Load and preprocess image
 img_path = 'path/to/waste/image.jpg'
 img = image.load_img(img_path, target_size=(150, 150))
 img_array = image.img_to_array(img)
 img_array = np.expand_dims(img_array, axis=0)
 img_array /= 255.0
 
-# Fazer predição
+# Make prediction
 prediction = fine_tune_model.predict(img_array)
 class_label = 'O' if prediction[0][0] < 0.5 else 'R'
-print(f"Classificação: {class_label}")
+print(f"Classification: {class_label}")
 ```
 
 ---
 
-## 📈 Resultados
+## 📈 Results
 
-### Métricas de Desempenho
+### Performance Metrics
 
-Os modelos foram avaliados no conjunto de teste com 200 imagens (100 por classe).
+The models were evaluated on the test set with 200 images (100 per class).
 
 #### Extract Features Model
 
-| Métrica | Valor |
-|---------|-------|
-| **Acurácia** | ~84-85% |
-| **Validação** | Acurácia final de ~84.9% após 10 épocas |
-| **Loss de validação** | ~0.36 |
+| Metric | Value |
+|--------|-------|
+| **Accuracy** | ~84-85% |
+| **Validation** | Final accuracy of ~84.9% after 10 epochs |
+| **Validation loss** | ~0.36 |
 
 #### Fine-Tuned Model
 
-| Métrica | Valor |
-|---------|-------|
-| **Acurácia** | Melhorada em relação ao Extract Features Model |
-| **Validação** | Acurácia final superior após fine-tuning |
-| **Loss de validação** | Reduzida comparado ao modelo base |
+| Metric | Value |
+|--------|-------|
+| **Accuracy** | Improved compared to Extract Features Model |
+| **Validation** | Superior final accuracy after fine-tuning |
+| **Validation loss** | Reduced compared to base model |
 
-### Curvas de Treinamento
+### Training Curves
 
-O notebook inclui visualizações de:
+The notebook includes visualizations of:
 
-- **Curvas de Loss**: Treino vs. Validação
-- **Curvas de Acurácia**: Treino vs. Validação
-- **Comparação entre modelos**: Extract Features vs. Fine-Tuned
+- **Loss Curves**: Training vs. Validation
+- **Accuracy Curves**: Training vs. Validation
+- **Model Comparison**: Extract Features vs. Fine-Tuned
 
-### Visualizações de Predições
+### Prediction Visualizations
 
-O projeto inclui visualizações de predições em imagens de teste, mostrando:
+The project includes prediction visualizations on test images, showing:
 
-- Imagem original
-- Classe verdadeira
-- Classe predita
-- Probabilidade de confiança
+- Original image
+- True class
+- Predicted class
+- Confidence probability
 
 ---
 
-## 🔬 Metodologia
+## 🔬 Methodology
 
-### 1. Preparação dos Dados
+### 1. Data Preparation
 
-- **Normalização**: Redimensionamento para 150x150 pixels
-- **Rescaling**: Normalização de valores de pixel (0-255 → 0-1)
-- **Data Augmentation** (treino):
-  - Rotação horizontal (horizontal_flip)
-  - Deslocamento de largura (width_shift_range=0.1)
-  - Deslocamento de altura (height_shift_range=0.1)
+- **Normalization**: Resizing to 150x150 pixels
+- **Rescaling**: Pixel value normalization (0-255 → 0-1)
+- **Data Augmentation** (training):
+  - Horizontal flip (horizontal_flip)
+  - Width shift (width_shift_range=0.1)
+  - Height shift (height_shift_range=0.1)
 
-### 2. Arquitetura do Modelo
+### 2. Model Architecture
 
 #### Extract Features Model
 
-1. Carregar VGG16 pré-treinado (pesos ImageNet)
-2. Congelar todas as camadas convolucionais
-3. Adicionar camadas densas personalizadas:
+1. Load pre-trained VGG16 (ImageNet weights)
+2. Freeze all convolutional layers
+3. Add custom dense layers:
    - Flatten
    - Dense(512) + ReLU + Dropout(0.5)
    - Dense(512) + ReLU + Dropout(0.5)
@@ -356,66 +356,66 @@ O projeto inclui visualizações de predições em imagens de teste, mostrando:
 
 #### Fine-Tuned Model
 
-1. Descongelar últimas camadas convolucionais do VGG16
-2. Treinar com taxa de aprendizado reduzida
-3. Manter camadas densas treináveis
+1. Unfreeze last convolutional layers of VGG16
+2. Train with reduced learning rate
+3. Keep trainable dense layers
 
-### 3. Treinamento
+### 3. Training
 
-| Parâmetro | Valor |
+| Parameter | Value |
 |-----------|-------|
 | **Optimizer** | Adam |
-| **Learning Rate** | 1e-4 inicial com decaimento exponencial |
+| **Learning Rate** | 1e-4 initial with exponential decay |
 | **Loss Function** | Binary Crossentropy |
 | **Batch Size** | 32 |
-| **Epochs** | 10 (com early stopping) |
+| **Epochs** | 10 (with early stopping) |
 | **Callbacks** | Early Stopping, Model Checkpoint, Learning Rate Scheduler |
 
-**Callbacks utilizados:**
+**Callbacks used:**
 
 - Early Stopping (patience=4, monitor='val_loss')
-- Model Checkpoint (salvar melhor modelo)
-- Learning Rate Scheduler (decaimento exponencial)
+- Model Checkpoint (save best model)
+- Learning Rate Scheduler (exponential decay)
 
-### 4. Avaliação
+### 4. Evaluation
 
-- **Métricas**: Acurácia, Precision, Recall, F1-Score
-- **Visualização**: Matriz de confusão, relatórios de classificação
-- **Teste**: 200 imagens não vistas durante o treinamento
-
----
-
-## 🤝 Contribuições
-
-Contribuições são bem-vindas! Se você deseja contribuir para este projeto:
-
-1. Faça um Fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-### Áreas para Melhorias Futuras
-
-- [ ] Adicionar mais classes de resíduos (papel, plástico, vidro, etc.)
-- [ ] Implementar API REST para predições em tempo real
-- [ ] Criar interface web para upload de imagens
-- [ ] Adicionar suporte para vídeo em tempo real
-- [ ] Otimizar modelo para dispositivos móveis (TensorFlow Lite)
-- [ ] Implementar ensemble de modelos
-- [ ] Adicionar explicações de predições (XAI)
+- **Metrics**: Accuracy, Precision, Recall, F1-Score
+- **Visualization**: Confusion matrix, classification reports
+- **Test**: 200 images not seen during training
 
 ---
 
-## 📄 Licença
+## 🤝 Contributions
 
-Este projeto foi desenvolvido como parte do curso **Deep Learning with Keras and TensorFlow** da Coursera. O código é fornecido para fins educacionais.
+Contributions are welcome! If you wish to contribute to this project:
+
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Areas for Future Improvements
+
+- [ ] Add more waste classes (paper, plastic, glass, etc.)
+- [ ] Implement REST API for real-time predictions
+- [ ] Create web interface for image upload
+- [ ] Add support for real-time video
+- [ ] Optimize model for mobile devices (TensorFlow Lite)
+- [ ] Implement model ensemble
+- [ ] Add prediction explanations (XAI)
 
 ---
 
-## 📚 Referências
+## 📄 License
 
-### Artigos e Documentação
+This project was developed as part of the **Deep Learning with Keras and TensorFlow** course on Coursera. The code is provided for educational purposes.
+
+---
+
+## 📚 References
+
+### Articles and Documentation
 
 - [VGG16 Paper](https://arxiv.org/abs/1409.1556) - Very Deep Convolutional Networks for Large-Scale Image Recognition
 - [Transfer Learning Guide](https://www.tensorflow.org/tutorials/images/transfer_learning) - TensorFlow Official Documentation
@@ -425,12 +425,12 @@ Este projeto foi desenvolvido como parte do curso **Deep Learning with Keras and
 
 - [Waste Classification Dataset](https://www.kaggle.com/datasets/techsash/waste-classification-data) - Kaggle Dataset
 
-### Cursos e Tutoriais
+### Courses and Tutorials
 
 - [Deep Learning with Keras and TensorFlow](https://www.coursera.org/) - Coursera Course
 - [Skills Network](https://skills.network/) - IBM Skills Network
 
-### Bibliotecas
+### Libraries
 
 - [TensorFlow Documentation](https://www.tensorflow.org/api_docs)
 - [Keras Documentation](https://keras.io/)
@@ -438,34 +438,34 @@ Este projeto foi desenvolvido como parte do curso **Deep Learning with Keras and
 
 ---
 
-## 👤 Autor
+## 👤 Author
 
-**Seu Nome**
+**Your Name**
 
-- GitHub: [@seu-usuario](https://github.com/seu-usuario)
-- LinkedIn: [Seu Perfil](https://linkedin.com/in/seu-perfil)
-- Email: seu.email@example.com
-
----
-
-## 🙏 Agradecimentos
-
-- **Coursera** e **IBM Skills Network** pelo excelente curso
-- **Kaggle** pela disponibilização do dataset
-- Comunidade open-source pelas ferramentas e bibliotecas utilizadas
+- GitHub: [@your-username](https://github.com/your-username)
+- LinkedIn: [Your Profile](https://linkedin.com/in/your-profile)
+- Email: your.email@example.com
 
 ---
 
-## 📧 Contato
+## 🙏 Acknowledgments
 
-Para dúvidas, sugestões ou colaborações, sinta-se à vontade para abrir uma issue ou entrar em contato.
+- **Coursera** and **IBM Skills Network** for the excellent course
+- **Kaggle** for providing the dataset
+- Open-source community for the tools and libraries used
+
+---
+
+## 📧 Contact
+
+For questions, suggestions, or collaborations, feel free to open an issue or get in touch.
 
 ---
 
 <div align="center">
 
-**Se este projeto foi útil para você, considere dar uma estrela! ⭐**
+**If this project was useful to you, consider giving it a star! ⭐**
 
-Feito com ❤️ usando TensorFlow e Keras
+Made with ❤️ using TensorFlow and Keras
 
 </div>
